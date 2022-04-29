@@ -140,77 +140,87 @@ def create_graph(graph, out):
     ## MUST CHECK IF THE NODE HAS A PEICE ON IT> IF IT DOES THEN MAKE THE EDGE HAVE MASSIVE WEIGHT
     # top rank : a file
     if(not (isTop or isA)):
-      #if current_node != 0:
-      #print(current_node)
-      neighbor_node_num = current_node - 17 - 1
-      #print(f"Adding Edge topleft : [{current_node}]-->[{neighbor_node_num}]")
-      if(hf.node_hasPiece(current_node, out) == True):
-        graph.add_edge(current_node, neighbor_node_num, 100)
+
+      neighbor_node_num = current_node + 17 - 1
+      if(hf.node_hasPiece(neighbor_node_num, out) == True):
+        graph.add_edge(current_node, neighbor_node_num, 100.70716)
       else:
-        graph.add_edge(current_node, neighbor_node_num, 0.701)
+        if((neighbor_node_num // 17 % 2 == 0) ^ (neighbor_node_num % 17 % 2 == 0 )):
+          graph.add_edge(current_node, neighbor_node_num, 10)
+        else:
+          graph.add_edge(current_node, neighbor_node_num, 0.707106)
 
         # is only top rank
     if(not isTop):
-      neighbor_node_num = current_node - 17
+      neighbor_node_num = current_node + 17
       #print(f"Adding Edge top : [{current_node}]-->[{neighbor_node_num}]")
-      if(hf.node_hasPiece(current_node, out) == True):
-        graph.add_edge(current_node, neighbor_node_num, 100)
+      if(hf.node_hasPiece(neighbor_node_num, out) == True):
+        graph.add_edge(current_node, neighbor_node_num, 100.5)
       else:
         graph.add_edge(current_node, neighbor_node_num, 0.5)
 
     # top rank : h file
     if(not (isTop or isH)):
       #if current_node !=16:
-      neighbor_node_num = current_node - 17 + 1
+      neighbor_node_num = current_node + 17 + 1
       #print(f"Adding Edge topright : [{current_node}]-->[{neighbor_node_num}]")
-      if(hf.node_hasPiece(current_node, out) == True):
-        graph.add_edge(current_node, neighbor_node_num, 100)
+      if(hf.node_hasPiece(neighbor_node_num, out) == True):
+        graph.add_edge(current_node, neighbor_node_num, 100.707106)
       else:
-        graph.add_edge(current_node, neighbor_node_num, 0.701)
+        if((neighbor_node_num // 17 % 2 == 0) ^ (neighbor_node_num % 17 % 2 == 0 )):
+          graph.add_edge(current_node, neighbor_node_num, 10)
+        else:
+          graph.add_edge(current_node, neighbor_node_num, 0.707106)
 
     # h file
     if(not isH):
       neighbor_node_num = current_node + 1
       #print(f"Adding Edge right: [{current_node}]-->[{neighbor_node_num}]")
-      if(hf.node_hasPiece(current_node, out) == True):
-        graph.add_edge(current_node, neighbor_node_num, 100)
+      if(hf.node_hasPiece(neighbor_node_num, out) == True):
+        graph.add_edge(current_node, neighbor_node_num, 100.5)
       else:
         graph.add_edge(current_node, neighbor_node_num, 0.5)
 
     # h file : bottom
     if(not (isH or isBottom)):
       
-      neighbor_node_num = current_node + 17 + 1
+      neighbor_node_num = current_node - 17 + 1
       #print(f"Adding Edge bottomright : [{current_node}]-->[{neighbor_node_num}]")
-      if(hf.node_hasPiece(current_node, out) == True):
-        graph.add_edge(current_node, neighbor_node_num, 100)
+      if(hf.node_hasPiece(neighbor_node_num, out) == True):
+        graph.add_edge(current_node, neighbor_node_num, 100.707)
       else:
-        graph.add_edge(current_node, neighbor_node_num, .701)
+        if((neighbor_node_num // 17 % 2 == 0) ^ (neighbor_node_num % 17 % 2 == 0 )):
+          graph.add_edge(current_node, neighbor_node_num, 10)
+        else:
+          graph.add_edge(current_node, neighbor_node_num, 0.707106)
 
     # bottom
     if(not isBottom):
-      neighbor_node_num = current_node + 17
+      neighbor_node_num = current_node - 17
       #print(f"Adding Edge bottom : [{current_node}]-->[{neighbor_node_num}]")
-      if(hf.node_hasPiece(current_node, out) == True):
-        graph.add_edge(current_node, neighbor_node_num, 100)
+      if(hf.node_hasPiece(neighbor_node_num, out) == True):
+        graph.add_edge(current_node, neighbor_node_num, 100.5)
       else:
         graph.add_edge(current_node, neighbor_node_num, 0.5)
 
     # isBottom : is A
     if(not (isBottom or isA)):
-      neighbor_node_num = current_node + 17 - 1
+      neighbor_node_num = current_node - 17 - 1
       #print(f"Adding Edge bottomleft : [{current_node}]-->[{neighbor_node_num}]")
-      if(hf.node_hasPiece(current_node, out) == True):
-        graph.add_edge(current_node, neighbor_node_num, 100)
+      if(hf.node_hasPiece(neighbor_node_num, out) == True):
+        graph.add_edge(current_node, neighbor_node_num, 100.707101)
       else:
-        graph.add_edge(current_node, neighbor_node_num, 0.701)
+        if((neighbor_node_num // 17 % 2 == 0) ^ (neighbor_node_num % 17 % 2 == 0) ):
+          graph.add_edge(current_node, neighbor_node_num, 10)
+        else:
+          graph.add_edge(current_node, neighbor_node_num, 0.707106)
 
     # isA
     if(not isA):
       neighbor_node_num = current_node - 1
       #print(f"Adding Edge left : [{current_node}]-->[{neighbor_node_num}]")
-      if(hf.node_hasPiece(current_node, out) == True):
-        graph.add_edge(current_node, neighbor_node_num, 100)
+      if(hf.node_hasPiece(neighbor_node_num, out) == True):
+        graph.add_edge(current_node, neighbor_node_num, 100.5)
       else:
         graph.add_edge(current_node, neighbor_node_num, .5)
 

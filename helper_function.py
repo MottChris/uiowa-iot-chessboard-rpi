@@ -27,11 +27,14 @@ def testPrint():
 # Input node int as number between 0 - 288 (i think 288)
 def node_hasPiece(nodeNum, cleaned_game_str):
   # ensure inputted node spot is piece eligable
-  if nodeNum // 17 % 2 == 1 and nodeNum % 17 % 2 == 1:
-    i = nodeNum // 17 // 2
-    j = nodeNum % 17 // 2
+  cleaned_str = cleaned_game_str[::-1]
+  if nodeNum // 16 % 2 == 1 and nodeNum % 16 % 2 == 1:
+    i = nodeNum // 16 // 2
+    j = (16 - (nodeNum % 16)) // 2
+    print(f'{i},{j}')
+
     # if there is no peice on the spot, return false
-    if(cleaned_game_str[i * 8 + j] == '.'):
+    if(cleaned_str[i * 7 + j] == '.'):
       return False
     else:
       #print(f"Piece was found on : ({i}, {j}), n = {nodeNum} char = {cleaned_game_str}")
